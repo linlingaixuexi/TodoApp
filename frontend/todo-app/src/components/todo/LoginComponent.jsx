@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-// Hello test 22
 class LoginComponent extends Component {
     constructor (props) {
         super(props)
@@ -30,8 +30,9 @@ class LoginComponent extends Component {
 
     loginClicked() {
         if(this.state.username === 'linglin' && this.state.password === 'dummy'){
-            this.setState({showSuccessMessage:true})
-            this.setState({hasLoginFailed:false})
+            this.props.navigate("/welcome/${this.state.username}")
+            // this.setState({showSuccessMessage:true})
+            // this.setState({hasLoginFailed:false})
         } 
         else {
             this.setState({showSuccessMessage:false}) 
@@ -66,4 +67,9 @@ class LoginComponent extends Component {
 //     } 
 //     return null  
 // }
-export default LoginComponent
+
+function WithNavigate(props) {
+    let navigate = useNavigate()
+    return <LoginComponent {...props} navigate={navigate} />
+}
+export default WithNavigate

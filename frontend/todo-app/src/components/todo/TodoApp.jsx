@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Switch, Route} from 'react-router-dom'
 import LoginComponent from './LoginComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 
@@ -9,9 +9,10 @@ class TodoApp extends Component {
             <div className = "TodoApp">
                 <Router>
                     <Routes>
-                        <Route path="/" element={<LoginComponent/>}/>
-                        <Route path="/login" element={<LoginComponent/>}/>
-                        <Route path="/welcome" element={<WelcomeComponent/>}/>
+                            <Route path="/" element={<LoginComponent/>}/>
+                            <Route path="/login" element={<LoginComponent/>}/>
+                            <Route path="/welcome" element={<WelcomeComponent/>}/>
+                            <Route element={<ErrorComponent/>}/>
                     </Routes>
                 </Router>
                 {/* <LoginComponent/>
@@ -21,6 +22,9 @@ class TodoApp extends Component {
     }
 }
 
+function ErrorComponent() {
+    return <div>An Error Occured. I don't know what to do! Contact support at abcd-efgh-ijkl</div>
+}
 // class WelcomeComponent extends Component {
 //     render() {
 //         return <div>Welcome Todo</div>
