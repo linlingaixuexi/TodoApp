@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Routes, useParams, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, useParams, Route, Link} from 'react-router-dom'
 import LoginComponent from './LoginComponent.jsx'
+
 //import WelcomeComponent from './WelcomeComponent.jsx'
 
 class TodoApp extends Component {
@@ -8,6 +9,7 @@ class TodoApp extends Component {
         return (
             <div className = "TodoApp">
                 <Router>
+                    <HeaderComponent/>
                     <Routes>
                             <Route path="/" element={<LoginComponent/>}/>
                             <Route path="/login" element={<LoginComponent/>}/>
@@ -15,6 +17,7 @@ class TodoApp extends Component {
                             <Route path ="*" element={<ErrorComponent/>}/>
                             <Route path="/todos" element={<ListTodosComponent/>}/>
                     </Routes>
+                    <FooterComponent/>
                 </Router>
                 {/* <LoginComponent/>
                 <WelcomeComponent/> */}
@@ -23,15 +26,34 @@ class TodoApp extends Component {
     }
 }
 
+class HeaderComponent extends Component {
+    render() {
+        return (
+            <div>
+                Header <hr/>
+            </div>
+        )
+    }
+}
+
+class FooterComponent extends Component {
+    render() {
+        return (
+            <div>
+                <hr/>Footer 
+            </div>
+        )
+    }
+}
 class ListTodosComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
             todos : 
             [
-            {id: 1, description : 'Learn React'},
-            {id: 2, description : 'Find a job'},
-            {id: 3, description : 'Visit families'}
+            {id: 1, description : 'Learn React', done:false, targetDate: new Date()},
+            {id: 2, description : 'Find a job', done:false, targetDate: new Date()},
+            {id: 3, description : 'Visit families', done:false, targetDate: new Date()}
             ]
         }
     }
@@ -45,6 +67,8 @@ class ListTodosComponent extends Component {
                     <tr>
                         <th>id</th>
                         <th>description</th>
+                        <th>Target Date</th>
+                        <th>Is Completed?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +78,8 @@ class ListTodosComponent extends Component {
                                 <tr>
                                     <td>{todo.id}</td>
                                     <td>{todo.description}</td>
+                                    <td>{todo.done.toString()}</td>
+                                    <td>{todo.targetDate.toString()}</td>
                                 </tr>
                         )
                     }
@@ -67,7 +93,9 @@ class ListTodosComponent extends Component {
 
 function WelcomeComponent () {
         let {name} = useParams()
-        return <div>Hi {name}! Welcome to your Todo Application</div>
+        return <div>
+            Hi {name}! Welcome to your Todo Application. You can manage your todos <Link to = "/todos">here</Link>.
+            </div>
 }
 
 function ErrorComponent() {

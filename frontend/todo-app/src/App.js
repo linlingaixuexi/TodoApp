@@ -6,6 +6,7 @@ import TodoApp from './components/todo/TodoApp';
 import Counter from './components/counter/Counter'
 import logo from './logo.svg';
 import './App.css';
+import './bootstrap.css';
  
 class App extends Component {
   render() {
