@@ -89,29 +89,31 @@ class ListTodosComponent extends Component {
         return (
         <div>
             <h1>List Todos</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>description</th>
-                        <th>Target Date</th>
-                        <th>Is Completed?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { 
-                        this.state.todos.map (
-                            todo =>
-                                <tr>
-                                    <td>{todo.id}</td>
-                                    <td>{todo.description}</td>
-                                    <td>{todo.done.toString()}</td>
-                                    <td>{todo.targetDate.toString()}</td>
-                                </tr>
-                        )
-                    }
-                </tbody>
-            </table>
+            <div classname="container">
+                <table className = "table">
+                    <thead>
+                        <tr>
+                            {/* <th>id</th> */}
+                            <th>description</th>
+                            <th>Target Date</th>
+                            <th>Is Completed?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { 
+                            this.state.todos.map (
+                                todo =>
+                                    <tr>
+                                        {/* <td>{todo.id}</td> */}
+                                        <td>{todo.description}</td>
+                                        <td>{todo.done.toString()}</td>
+                                        <td>{todo.targetDate.toString()}</td>
+                                    </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
         )
     }
@@ -121,7 +123,9 @@ class ListTodosComponent extends Component {
 function WelcomeComponent () {
         let {name} = useParams()
         return <div>
-            Hi {name}! Welcome to your Todo Application. You can manage your todos <Link to = "/todos">here</Link>.
+                    <h1> Welcome!</h1>
+                    <div classname ="container">Hi {name}! Welcome to your Todo Application. You can manage your todos <Link to = "/todos">here</Link>.
+                    </div>
             </div>
 }
 
