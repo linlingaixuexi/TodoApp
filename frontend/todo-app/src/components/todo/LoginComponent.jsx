@@ -72,4 +72,5 @@ function WithNavigate(props) {
     let navigate = useNavigate()
     return <LoginComponent {...props} navigate={navigate} />
 }
+
 export default WithNavigate
