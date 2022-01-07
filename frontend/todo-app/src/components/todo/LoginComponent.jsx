@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AuthenticationService from './AuthenticationService.js'
 
 class LoginComponent extends Component {
     constructor (props) {
@@ -30,6 +31,7 @@ class LoginComponent extends Component {
 
     loginClicked() {
         if(this.state.username === 'linglin' && this.state.password === 'dummy'){
+            AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password)
             this.props.navigate(`/welcome/${this.state.username}`)
             // this.setState({showSuccessMessage:true})
             // this.setState({hasLoginFailed:false})
