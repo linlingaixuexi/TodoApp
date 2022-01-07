@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
-import {BrowserRouter as Router, Routes, useParams, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, useParams, Route} from 'react-router-dom'
 import AuthenticationService from './AuthenticationService.js'
 import LoginComponent from './LoginComponent.jsx'
+import HeaderComponent from './HeaderComponent.jsx'
+import {Link, useNavigate } from 'react-router-dom';
 
 //import WelcomeComponent from './WelcomeComponent.jsx'
 
@@ -28,26 +30,28 @@ class TodoApp extends Component {
     }
 }
 
-class HeaderComponent extends Component {
-    render() {
-        return (
-            <header>
-                <nav className = "navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href = "http://www.linglin.com" className = "navbar-brand">linglin</a></div> 
-                    <ul className = "navbar-nav">
-                        <li><Link className="nav-link" to = "/welcome/linglin">Home</Link></li>
-                        <li><Link className="nav-link" to = "/todos">Todos</Link></li>
-                    </ul> 
-                    <ul className = "navbar-nav navbar-collapse justify-content-end">
-                        <li><Link className="nav-link" to = "/login">Login</Link></li>
-                        <li><Link className="nav-link" to = "/logout" onClick ={AuthenticationService.logout}>Logout</Link></li>
-                    </ul> 
-                </nav>
-            </header>
-            
-        )
-    }
-}
+// class HeaderComponent extends Component {
+//     render() {
+//         const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+//         console.log(isUserLoggedIn);
+
+//         return (
+//             <header>
+//                 <nav className = "navbar navbar-expand-md navbar-dark bg-dark">
+//                     <div><a href = "http://www.linglin.com" className = "navbar-brand">linglin</a></div> 
+//                     <ul className = "navbar-nav">
+//                         <li><Link className="nav-link" to = "/welcome/linglin">Home</Link></li>
+//                         <li><Link className="nav-link" to = "/todos">Todos</Link></li>
+//                     </ul> 
+//                     <ul className = "navbar-nav navbar-collapse justify-content-end">
+//                         <li><Link className="nav-link" to = "/login">Login</Link></li>
+//                         <li><Link className="nav-link" to = "/logout" onClick ={AuthenticationService.logout}>Logout</Link></li>
+//                     </ul> 
+//                 </nav>
+//             </header>
+//         )
+//     }
+// }
 
 
 class FooterComponent extends Component {
@@ -60,18 +64,20 @@ class FooterComponent extends Component {
     }
 }
 
+
 class LogoutComponent extends Component {
     render() {
         return (
-            <div>
-            <h1> You are logged out</h1>
-                <div classname ="container">
-                    Thank you for Using Our Application.
+            <>
+                <h1>You are logged out</h1>
+                <div className="container">
+                    Thank You for Using Our Application.
                 </div>
-            </div>
+            </>
         )
     }
 }
+
 
 class ListTodosComponent extends Component {
     constructor(props) {
@@ -90,7 +96,7 @@ class ListTodosComponent extends Component {
         return (
         <div>
             <h1>List Todos</h1>
-            <div classname="container">
+            <div className="container">
                 <table className = "table">
                     <thead>
                         <tr>
@@ -104,7 +110,7 @@ class ListTodosComponent extends Component {
                         { 
                             this.state.todos.map (
                                 todo =>
-                                    <tr>
+                                    <tr key = {todo.id}>
                                         {/* <td>{todo.id}</td> */}
                                         <td>{todo.description}</td>
                                         <td>{todo.done.toString()}</td>
@@ -125,7 +131,7 @@ function WelcomeComponent () {
         let {name} = useParams()
         return <div>
                     <h1> Welcome!</h1>
-                    <div classname ="container">Hi {name}! Welcome to your Todo Application. You can manage your todos <Link to = "/todos">here</Link>.
+                    <div className ="container">Hi {name}! Welcome to your Todo Application. You can manage your todos <Link to = "/todos">here</Link>.
                     </div>
             </div>
 }

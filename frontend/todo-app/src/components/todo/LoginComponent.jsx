@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthenticationService from './AuthenticationService.js'
 
+
 class LoginComponent extends Component {
     constructor (props) {
         super(props)
@@ -52,7 +53,7 @@ class LoginComponent extends Component {
                     {this.state.showSuccessMessage && <div>Login Successful</div>}
                     User Name: <input type = "text" name = "username" value={this.state.username} onChange = {this.handleChange}/>
                     Password: <input type = "password" name = "password" value={this.state.password} onChange = {this.handleChange}/>
-                <button className="bnt bnt-success" onClick= {this.loginClicked}>Login</button>
+                    <button className="bnt bnt-success" onClick= {this.loginClicked}>Login</button>
                 </div>
             </div>
         )
