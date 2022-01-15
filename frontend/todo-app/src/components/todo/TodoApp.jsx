@@ -101,7 +101,7 @@ class ListTodosComponent extends Component {
                     <thead>
                         <tr>
                             {/* <th>id</th> */}
-                            <th>description</th>
+                            <th>Description</th>
                             <th>Target Date</th>
                             <th>Is Completed?</th>
                         </tr>
