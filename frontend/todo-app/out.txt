@@ -1,0 +1,8 @@
+Makefile
+README.md
+node_modules
+out.txt
+package-lock.json
+package.json
+public
+src
