@@ -50,17 +50,17 @@ class Counter extends Component {
 class CounterButton extends Component {
     // Define the initial state in a constructor
     // state => counter 0
-    constructor() {
-        super();
+    // constructor() {
+    //     super();
 
-        this.state = {
-            counter : 0
-        }
+    //     this.state = {
+    //         counter : 0
+    //     }
 
-        this.increment = this.increment.bind(this)
-        this.decrement = this.decrement.bind(this)
+    //     this.increment = this.increment.bind(this)
+    //     this.decrement = this.decrement.bind(this)
 
-    }
+    // }
     render(){
         return (
             <div className = "counter">
@@ -71,23 +71,23 @@ class CounterButton extends Component {
         );
     }
 
-    increment() {
-        // console.log("increment") ;
-        // this.state.counter ++; // Bad Practice
-        this.setState({
-            counter : this.state.counter + this.props.by
-        });
-        this.props.incrementMethod(this.props.by);
-    }
+    // increment() {
+    //     // console.log("increment") ;
+    //     // this.state.counter ++; // Bad Practice
+    //     this.setState({
+    //         counter : this.state.counter + this.props.by
+    //     });
+    //     this.props.incrementMethod(this.props.by);
+    // }
 
-    decrement() {
-        //console.log("increment") ;
-        // this.state.counter ++; // Bad Practice
-        this.setState({
-            counter : this.state.counter - this.props.by
-        });
-        this.props.decrementMethod(this.props.by);
-    }
+    // decrement() {
+    //     //console.log("increment") ;
+    //     // this.state.counter ++; // Bad Practice
+    //     this.setState({
+    //         counter : this.state.counter - this.props.by
+    //     });
+    //     this.props.decrementMethod(this.props.by);
+    // }
 }
 
 CounterButton.defaultProps = {
